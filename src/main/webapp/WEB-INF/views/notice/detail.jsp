@@ -46,7 +46,7 @@
 			 
 		<c:if test="${vo.board_writer eq loginInfo.id }">	 		
 			<a class='btn-fill' href='modify.no?id=${vo.board_num }'>수정</a>
-			<a class='btn-fill' onclick=" if(confirm('정말 삭제?')) { href='delete.no?id=${vo.board_num}' } ">삭제</a>
+			<a class='btn-fill' onclick=" if(confirm('정말로 글을 삭제하시겠습니까?')) { href='delete.no?id=${vo.board_num}' } ">삭제</a>
 		</c:if>
 		<!-- 로그인되어 있는 경우 답글 쓰기 가능 -->
 		<c:if test="${!empty loginInfo }">

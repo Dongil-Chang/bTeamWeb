@@ -185,13 +185,6 @@ public class NoticeController {
 					String search, String keyword,
 				@RequestParam(defaultValue = "1") int curPage) {
 		
-		// 공지글 처리중 임의로 로그인해 두기 - 나중에 삭제할 것
-		/*
-		 * HashMap<String, String> map = new HashMap<String, String>(); map.put("id",
-		 * "hanul"); map.put("pw", "hanul"); session.setAttribute("loginInfo",
-		 * member.member_login(map));
-		 */
-		
 		session.setAttribute("category", "no");
 		
 	//  DB에서 공지글 목록을 조회해와 목록화면에 출력		

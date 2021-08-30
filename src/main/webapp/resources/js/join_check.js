@@ -11,7 +11,16 @@
 		else if (tag == 'pw') 		return this.pw_status ( data ); 
 		else if (tag == 'pw_ck')	return this.pw_ck_status ( data );
 		else if (tag == 'email')	return this.email_status (data );
+		else if (tag == 'prov_chk') return this.prov_status (data);
 	}
+	
+	, prov_chk : {
+		valid : {code : 'valid', desc : '가입 가능' }
+		, invalid : {code : 'invalid', desc : '필수 선택 항목입니다'}
+	}
+	
+	
+	
 	, email_status : function(email) {
 		var reg = /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 	// 	var reg = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;	

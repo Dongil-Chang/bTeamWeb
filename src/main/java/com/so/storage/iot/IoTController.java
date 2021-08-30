@@ -30,12 +30,28 @@ public class IoTController {
 		map.put("hum", req.getParameter("hum"));
 		map.put("product_code", "CS0001");
 		map.put("door_values", "4444");
-		map.put("b_press", req.getParameter("press"));
+		map.put("b_press", req.getParameter("b_press"));
 		
 //		model.addAttribute("vo", req.getParameter("temp"));
 //		model.addAttribute("vo", req.getParameter("hum"));
 		
 		model.addAttribute("map", service.IoT_insert_TemHum(map));
+		return "redirect:checkIoT";
+	}
+	
+	@RequestMapping("/arduPress")
+	public String insert_press_iot(IoTVO vo, HttpServletRequest req, Model model) {		
+		System.out.println("압력 : " + req.getParameter("b_press"));
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", "hanul");
+		map.put("product_code", "CS0001");
+		map.put("b_press", req.getParameter("b_press"));
+		
+//		model.addAttribute("vo", req.getParameter("temp"));
+//		model.addAttribute("vo", req.getParameter("hum"));
+		
+		model.addAttribute("map", service.IoT_insert_Press(map));
 		return "redirect:checkIoT";
 	}
 	
@@ -45,10 +61,10 @@ public class IoTController {
 //		return "iot/temHumVal";
 //	}
 	
-	@RequestMapping("/storage.my")
-	public String IoT_list(Model model, HttpSession session, String id) {
-		model.addAttribute("vo",service.IoT_list(id));
-		return "mypage/myStorage";
-	}
+//	@RequestMapping("/storage.my")
+//	public String IoT_list(Model model, HttpSession session, String id) {
+//		model.addAttribute("vo",service.IoT_list(id));
+//		return "mypage/myStorage";
+//	}
 	
 }

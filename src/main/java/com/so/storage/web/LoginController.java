@@ -195,6 +195,7 @@ public class LoginController {
 				MemberVO vo = new MemberVO();
 				vo.setSocial_type("naver");
 				vo.setId(json.getString("id") );
+				vo.setEmail(json.getString("email"));
 				vo.setSocial_email(json.getString("email"));
 				vo.setName(json.getString("name"));
 //				vo.setGender(json.has("gender") && json.getString("gender").equals("F") ? "여" : "남");

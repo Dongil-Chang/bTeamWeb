@@ -2,11 +2,31 @@ package member;
 
 public class MemberVO {
 	private String member_code, id, pw, name, email, addr, tel, birth, naver, kakao, 
-		commcode, subcode, social_email, social_type, booking;
+		commcode, subcode, social_email, social_type, booking, naver_login, kakao_login;
 	private int no;
 	
 	public int getNo() {
 		return no;
+	}
+
+
+	public String getNaver_login() {
+		return naver_login;
+	}
+
+
+	public void setNaver_login(String naver_login) {
+		this.naver_login = naver_login;
+	}
+
+
+	public String getKakao_login() {
+		return kakao_login;
+	}
+
+
+	public void setKakao_login(String kakao_login) {
+		this.kakao_login = kakao_login;
 	}
 
 
@@ -17,6 +37,23 @@ public class MemberVO {
 
 	public MemberVO() {}
 	
+	public MemberVO(String id, String pw, String name, String email, String tel) {
+		super();
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.email = email;
+		this.tel = tel;
+	}
+	
+	
+//	카카오 로그인 정보 저장 생성자
+	public MemberVO(String id, String name, String kakao_login) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.kakao_login = kakao_login;
+	}
 	
 	public String getBooking() {
 		return booking;
@@ -50,14 +87,6 @@ public class MemberVO {
 
 
 
-	public MemberVO(String id, String pw, String name, String email, String tel) {
-		super();
-		this.id = id;
-		this.pw = pw;
-		this.name = name;
-		this.email = email;
-		this.tel = tel;
-	}
 
 		
 

@@ -237,8 +237,8 @@ li.list-view, li.grid-view { color:#3367d6; padding: 0 6px; border: 1px solid #c
 .list-view a.off, .grid-view a.off { color:#ccc }
 
 
-.aside { width : 20%; height : 92.5%; float : left; background : #6096ba; padding-top: 60px;}
-.content { width : 80%; height : 92.5%; float : left; padding-top: 60px;}
+.aside { width : 20%; min-height : 400px; float : left; background : #6096ba; padding-top: 60px;}
+.content { width : 80%; min-height : 400px; float : left; padding-top: 60px;}
 
 .w-pct80 { width:80% }
 .w-pct70 { width:70% }

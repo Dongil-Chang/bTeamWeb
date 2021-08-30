@@ -18,7 +18,9 @@
 	</insert>
 	
 	<select id="pwchk" resultType="member.MemberVO">
-		select * from user_member where pw = #{pw}
+		select * from user_member 
+		where id = #{id}
+		and pw = #{pw}
 	</select>
 	
 <!-- 안드로이드 idchk에서 사용 
@@ -43,6 +45,43 @@
 		where id = #{id}
 	</update>
 	
+	<!-- 카카오 로그인 정보 저장 -->
+	<insert id="kakaoLogin_insert">
+		insert into user_member (member_code, id, name, kakao, commcode, subcode)
+		values (member_code_seq.nextval, #{id}, #{name}, #{kakao_login, jdbcType=VARCHAR}, 1, 1)
+	</insert>
+	
+	
+	<select id="provision_select_2" resultType="manager.ProvisionVO">
+		select provision_content from tbl_provision
+		where provision_code = #{use_agreement, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="provision_select_1" resultType="manager.ProvisionVO">
+		select provision_content from tbl_provision
+		where provision_code = #{person_information, jdbcType=VARCHAR}
+	</select>
+	
+	<insert id="provi_agree_insert1">
+		insert into provision_agree
+		values (1, #{id}, 'Y', sysdate)
+	</insert>
+	
+	<insert id="provi_agree_insert2">
+		insert into provision_agree
+		values (2, #{id}, 'Y', sysdate)
+	</insert>
+	
+	<select id="and_iot_select" resultType="iot.IoTVO">
+		select * 
+		from (select * from tbl_iot order by rownum desc) 
+		where rownum = 1
+		and id = #{id}
+	</select>
+	
+	
+	
+	
 	<!-- 이용약관 목록 조회 -->
 	<select id="provision_list" resultType="manager.ProvisionVO">
 		select * from tbl_provision
@@ -57,7 +96,7 @@
 	
 	
 	<update id="social_update">
-		update user_member set name = #{name}, 
+		update user_member set name = #{name}
 		where ${social_type} = #{social_email}
 	</update>
 

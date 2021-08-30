@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import iot.IoTVO;
 import manager.ProvisionVO;
 
 @Repository
@@ -84,6 +85,41 @@ public class MemberDAO implements MemberService {
 	public void joinMemberByGoogle(MemberVO vo) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public MemberVO member_pw_check(HashMap<String, String> map) {
+		return sql.selectOne("member.mapper.pwchk", map);
+	}
+
+	@Override
+	public boolean kakaoLogin_join(MemberVO vo) {
+		return sql.insert("member.mapper.kakaoLogin_insert", vo) == 1 ? true : false;
+	}
+
+	@Override
+	public ProvisionVO provision_select_2(String use_agreement) {
+		return sql.selectOne("member.mapper.provision_select_2", use_agreement);
+	}
+
+	@Override
+	public ProvisionVO provision_select_1(String person_information) {
+		return sql.selectOne("member.mapper.provision_select_1", person_information);
+	}
+
+	@Override
+	public boolean provi_agree_insert1(String id) {
+		return sql.insert("member.mapper.provi_agree_insert1", id) == 1 ? true : false;
+	}
+
+	@Override
+	public boolean provi_agree_insert2(String id) {
+		return sql.insert("member.mapper.provi_agree_insert2", id) == 1 ? true : false;
+	}
+
+	@Override
+	public IoTVO and_iot_select(String id) {
+		return sql.selectOne("member.mapper.and_iot_select", id);
 	}
 
 }

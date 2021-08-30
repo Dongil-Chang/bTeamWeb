@@ -37,7 +37,7 @@
 	<!-- 페이지 처리된 상품 전체 목록 조회 -->
 	<select id="list" resultType="product.ProductVO">
 		select * 
-		from (select  rownum no, p.*, (select product_using from tbl_product) product_using
+		from (select  rownum no, p.*, (select product_using from tbl_product where product_code = p.product_code) product_using
 			from (select * from product_reg <include refid="where_search" />
 					order by product_code) p					
 			order by no desc) p

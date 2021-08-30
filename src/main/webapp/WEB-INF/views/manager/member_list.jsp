@@ -9,16 +9,16 @@
 <body>
 	<h3>회원 목록</h3>
 	<div id='list-top'>
-		<form action="list.hr" method="post">
+		<form action="list.ma" method="post">
 		<input type="hidden" name="curPage" value="1" />
 			<div>
 				<ul>
 					<li>
 						<select name='search' class='w-px90'>
 							<option value="all"  ${page.search eq 'all' ? 'selected' : '' }>전체</option>
-							<option value="title" ${page.search eq 'title' ? 'selected' : '' }>제목</option>
-							<option value="content" ${page.search eq 'content' ? 'selected' : '' }>내용</option>
-							<option value="writer" ${page.search eq 'writer' ? 'selected' : '' }>작성자</option>
+							<option value="id" ${page.search eq 'id' ? 'selected' : '' }>아이디</option>
+							<option value="name" ${page.search eq 'name' ? 'selected' : '' }>성명</option>
+							<option value="email" ${page.search eq 'email' ? 'selected' : '' }>이메일	</option>
 						</select>
 					</li>
 					<li><input type="text" name='keyword' value='${page.keyword }' class='w-px300' /></li>
@@ -30,11 +30,12 @@
 	<table>
 		<thead>
 			<tr class='w-px120'>
+				<th>번호</th>
 				<th>아이디</th>
 				<th>성명</th>
 				<th>이메일</th>
 				<th>연락처</th>
-				<th>네이버_포털로그인</th>
+				<th>소셜 로그인</th>
 				<th>예약여부</th>
 				<th>멤버유형</th>
 			</tr>
@@ -42,6 +43,7 @@
 		<tbody>
 			<c:forEach items="${page.list }" var="vo">
 				<tr>
+					<td>${vo.no }</td>
 					<td>${vo.id }</td>
 					<td>${vo.name }</td>
 					<%-- <td><a href='detail.hr?id=${vo.employee_id}'>${vo.last_name }

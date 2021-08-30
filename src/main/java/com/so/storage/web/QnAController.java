@@ -21,12 +21,13 @@ public class QnAController {
 	@RequestMapping("/list.QnA")
 	public String QnA(HttpSession session, Model model,
 			String search, String keyword,
+			/* @RequestParam(defaultValue = "5") int pageList, */
 			@RequestParam(defaultValue = "1") int curPage) {
 		session.setAttribute("category", "QnA");
 		
 		// 페이지 처리된 글 목록조회
 		page.setCurPage(curPage); // 페이지의 현재 페이지는 curPage 이며
-
+//		page.setPageList(pageList);
 		// 게시글 검색을 위한 처리
 		page.setSearch(search);
 		page.setKeyword(keyword);

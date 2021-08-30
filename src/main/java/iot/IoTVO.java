@@ -5,8 +5,17 @@ import java.sql.Date;
 public class IoTVO {
 
 	private int iot_code; 
-	private float temperature, humidity;
+	private int temperature, humidity;
 	private String id, product_code, press, press_date, door_values, door_chk, door_date, temhum_date;
+	
+	public IoTVO() {}
+
+	public IoTVO(int temperature, int humidity, String temhum_date) {
+		super();
+		this.temperature = temperature;
+		this.humidity = humidity;
+		this.temhum_date = temhum_date;
+	}
 	
 	
 	public String getTemhum_date() {
@@ -21,18 +30,23 @@ public class IoTVO {
 	public void setIot_code(int iot_code) {
 		this.iot_code = iot_code;
 	}
-	public float getTemperature() {
+
+	public int getTemperature() {
 		return temperature;
 	}
-	public void setTemperature(float temperature) {
+
+	public void setTemperature(int temperature) {
 		this.temperature = temperature;
 	}
-	public float getHumidity() {
+
+	public int getHumidity() {
 		return humidity;
 	}
-	public void setHumidity(float humidity) {
+
+	public void setHumidity(int humidity) {
 		this.humidity = humidity;
 	}
+
 	public String getId() {
 		return id;
 	}

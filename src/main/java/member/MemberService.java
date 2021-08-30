@@ -3,6 +3,7 @@ package member;
 import java.util.HashMap;
 import java.util.List;
 
+import iot.IoTVO;
 import manager.ProvisionVO;
 
 public interface MemberService {
@@ -14,6 +15,9 @@ public interface MemberService {
 	//MemberVO member_id_check(String id); //아이디 중복확인
 	boolean member_id_check(String id); //아이디 중복확인
 	MemberVO member_pw_check(String pw); //회원탈퇴시 비밀번호 확인
+	
+	MemberVO member_pw_check(HashMap<String, String> map); // 회원 정보 수정 및 회원 탈퇴시 비밀번호 확인
+	
 	boolean member_update(MemberVO vo); //회원정보 변경저장
 	boolean member_delete(String id); //회원탈퇴시 회원정보 삭제
 	boolean member_social_email(MemberVO vo); //소셜회원 정보 존재여부
@@ -26,6 +30,12 @@ public interface MemberService {
 	ProvisionVO provision_list();// 회원 약관 내용 조회
 	ProvisionVO join_service_list();// 서비스 이용 약관 내용 조회
 	
-	
+	boolean kakaoLogin_join(MemberVO vo); //카카오로그인 회원정보 저장
 	List<MemberVO> mg_member_list(); 	// 회원목록 조회(안드로이드)
+	ProvisionVO provision_select_2(String use_agreement);
+	ProvisionVO provision_select_1(String person_information);
+	boolean provi_agree_insert1(String id);
+	boolean provi_agree_insert2(String id);
+	
+	IoTVO and_iot_select(String id); //안드로이드 iot 온도,습도 조회
 }

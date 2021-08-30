@@ -5,13 +5,13 @@
 
 	<sql id ='where_search'>
 		<!-- 제목에 테스트 문자가 있는 것을 조회 한다면 where title like '테스트' -->
-		<if test="search == 'title' or search == 'content'"> 
+		<if test="search == 'faq_title' or search == 'faq_content'"> 
 			where ${search} like '%'||#{keyword}||'%'
 		</if>
 	
 		<if test="search == 'all' "> 
-			where title like '%'||#{keyword}||'%'
-			or content like '%'||#{keyword}||'%'
+			where faq_title like '%'||#{keyword}||'%'
+			or faq_content like '%'||#{keyword}||'%'
 		</if>
 	</sql>
 

@@ -13,12 +13,21 @@
 				<div class='category' style="margin-left: 100px;">
 				<ul>
 					<li><a href='guide.gu' class="${category eq 'gu' ? 'active' : ''}">이용안내</a></li>
-					<li><a href='list.rv' class='${category eq "rv" ? "active" : "" }'>예약하기</a></li>
+					
+					<c:if test="${!empty loginInfo }">
+						<li><a href='list.rv' class='${category eq "rv" ? "active" : "" }'>예약하기</a></li>
+					</c:if>
+					<c:if test="${empty loginInfo }">
+						<li><a href='reserv_info.rv' class='${category eq "rv" ? "active" : "" }'>예약안내</a></li>
+					</c:if>
+					
 					<li><a href='list.no' class="${category eq 'no' ? 'active' : ''}">공지사항</a></li>
+					
 					<c:if test="${!empty loginInfo }">
 						<li><a href='cu_list.qa' class="${category eq 'qa' ? 'active' : ''}">1:1문의</a></li>
 <%-- 						<li><a href='cu_new.qa' class="${category eq 'qa' ? 'active' : ''}">1:1문의</a></li> --%>
 					</c:if>
+					
 					<li><a href='list.QnA' class='${category eq "QnA" ? "active" : "" }'>FAQ</a></li>
 					
 	<%-- 				<c:if test="${loginInfo.subcode eq '1' || loginInfo.subcode eq '3'}">
@@ -26,7 +35,8 @@
 					</c:if> --%>
 					
 					<c:if test="${loginInfo.subcode eq '3'}">
-						<li><a href='master.ma' class="${category eq 'ma' ? 'active' : ''}">관리자</a></li>
+						<li style="font-weight: 600;"><a href='list.ma' class="${category eq 'ma' ? 'active' : ''}">관리자</a></li>
+<%-- 						<li><a href='master.ma' class="${category eq 'ma' ? 'active' : ''}">관리자</a></li> --%>
 					</c:if>
 				</ul>
 				</div>
@@ -45,7 +55,12 @@
 				  		<!-- 로그인한 상태 -->
 				  		<c:if test="${!empty loginInfo }">
 				  		<li>
-				  			<a href='mypage.my'class="${category eq 'my' ? 'active' : ''}"><span class='log_name'>${loginInfo.name }</span> 님</a>
+				  			<c:if test="${loginInfo.subcode eq '3' }">
+				  				<a href='list.ma'class="${category eq 'ma' ? 'active' : ''}"><span class='log_name'>${loginInfo.name }</span> 님</a>
+				  			</c:if>
+				  			<c:if test="${loginInfo.subcode eq '1' || loginInfo.subcode eq '2' }">
+				  				<a href='mypage.my'class="${category eq 'my' ? 'active' : ''}"><span class='log_name'>${loginInfo.name }</span> 님</a>
+				  			</c:if>
 				  			<a href="logout" >로그아웃</a>
 <!-- 				  			<a href="logout" class="btn-fill">로그아웃</a> -->
 				  		</li>
@@ -59,7 +74,7 @@
 <style>
 .header-bg {
    background-color : #;
-    position : fixed;
+   position : fixed;
    width : 100%;
    height : 80px;
    top : 0;

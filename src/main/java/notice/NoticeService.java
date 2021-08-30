@@ -2,6 +2,9 @@ package notice;
 
 import java.util.List;
 
+import manager.FaqVO;
+
+
 public interface NoticeService {
 	// CRUD
 	void notice_insert(NoticeVO vo); 		// 공지글 신규 저장 (C)
@@ -15,4 +18,8 @@ public interface NoticeService {
 	void notice_reply_update(NoticeVO vo);	// 공지글에 대한 답글 변경저장  (U)
 	void notice_read(int id);				// 공지글 조회시 조회수 증가 처리 (U)
 	void notice_delete(int id);				// 공지글 삭제      (D)
+	
+	
+	List<NoticeVO> and_notice_list(); 		//안드로이드 - 공지글 조회
+	List<FaqVO> and_faq_list();				//안드로이드 - FaQ 조회
 }

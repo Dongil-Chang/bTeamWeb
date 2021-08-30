@@ -22,5 +22,10 @@ public class IoTDAO implements IoTService {
 		return sql.selectOne("iot.mapper.values", "id");
 	}
 
+	@Override
+	public int IoT_insert_Press(HashMap<String, Object> map) {
+		return sql.insert("iot.mapper.pressInsert", map);
+	}
+
 	
 }

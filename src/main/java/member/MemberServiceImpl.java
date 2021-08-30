@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import iot.IoTVO;
 import manager.ProvisionVO;
 
 @Service
@@ -82,6 +83,41 @@ public class MemberServiceImpl implements MemberService {
 	public void joinMemberByGoogle(MemberVO vo) {
 		dao.joinMemberByGoogle(vo);
 		
+	}
+
+	@Override
+	public MemberVO member_pw_check(HashMap<String, String> map) {
+		return dao.member_pw_check(map);
+	}
+
+	@Override
+	public boolean kakaoLogin_join(MemberVO vo) {
+		return dao.kakaoLogin_join(vo);
+	}
+
+	@Override
+	public ProvisionVO provision_select_2(String use_agreement) {
+		return dao.provision_select_2(use_agreement);
+	}
+
+	@Override
+	public ProvisionVO provision_select_1(String person_information) {
+		return dao.provision_select_1(person_information);
+	}
+
+	@Override
+	public boolean provi_agree_insert1(String id) {
+		return dao.provi_agree_insert1(id);
+	}
+
+	@Override
+	public boolean provi_agree_insert2(String id) {
+		return dao.provi_agree_insert2(id);
+	}
+
+	@Override
+	public IoTVO and_iot_select(String id) {
+		return dao.and_iot_select(id);
 	}
 
 }

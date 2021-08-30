@@ -23,12 +23,21 @@ import org.apache.commons.mail.MultiPartEmail;
 import org.apache.commons.mail.SimpleEmail;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class CommonService {
+	
+		//@Scheduled( cron = "0 0 0 01 * ?") //매월 1일 12시 0분 0초 실행
+		//@Scheduled( cron = "30 * * * * *") //매30초마다 실행
+		//순서: 초 분 시 일 월 요일 년
+//		@Scheduled(fixedDelay=1000*3) //30초 간격으로 실행
+//		public void detectChangedData() {
+//			System.out.println("DB Read: " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+//		}
 	
 	// 파일 다운로드 처리
 		public void fileDownload(String filename, String filepath, 

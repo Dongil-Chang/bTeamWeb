@@ -1,6 +1,7 @@
 package com.so.storage.common;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -30,21 +31,38 @@ public class ReservationController {
 //		return "reservation/reservation";
 //	}
 	
+	//Product_code 구분 
+	@ResponseBody
+	@RequestMapping("/and_reser_productCode")
+	public void reser_productCode(String product_code, String product_type,String product_id, HttpServletResponse res) throws Exception {
+
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("product_id", product_id); 
+		map.put("product_type", product_type);
+		
+		List< ReserVO > list = service.reser_productCode(map);
+		
+		//System.out.println("dddd");
+		common_gson(res, list);
+		
+		System.out.println(product_code + ", " + product_id+ ", " +product_type);
+		
+	}
+	
+	
+	//예약추가
 	@ResponseBody
 	@RequestMapping("/and_reser_insert")
-	public void join(HttpServletResponse res, ReserVO vo ) throws Exception {
-		MemberVO mVo = new MemberVO();
+	public void join(HttpServletResponse res, String reser_product_code ,String reser_booking_member , String reser_booking_start ,String reser_booking_end) throws Exception {
+		//MemberVO mVo = new MemberVO();
+	
 		
-		String reser_product_id = vo.getProduct_id();
-		String reser_product_type = vo.getProduct_type();
-		String reser_booking_member = mVo.getId();
-		String reser_booking_start = vo.getBooking_start();
-		String reser_booking_end = vo.getBooking_end();
-		String reser_product_using = vo.getProduct_using();
-		vo = new ReserVO(  reser_product_id, reser_product_type, reser_booking_member ,reser_booking_start, reser_booking_end, reser_product_using );
+		ReserVO vo = new ReserVO(  reser_product_code, reser_booking_member ,reser_booking_start, reser_booking_end);
 		
 		service.reser_insert(vo);
 		
+		System.out.println(reser_product_code+ reser_booking_member +reser_booking_start+ reser_booking_end);
 		//service.reser_list();
 		
 		common_gson(res, vo);
@@ -52,11 +70,13 @@ public class ReservationController {
 	}
 	
 	
+	//안드로이드 관리자용 예약목록 확인
 	@ResponseBody
 	   @RequestMapping("/and_reservationList")
 	   public void mg_reserList(HttpServletResponse res) throws Exception {
 	      
-	      List<ReserVO> list = service.reser_list();
+	      List<ReserVO> list = service.mg_reser_list();
+	      //System.out.println("dd");
 	   
 	      common_gson(res, list);
 	   }

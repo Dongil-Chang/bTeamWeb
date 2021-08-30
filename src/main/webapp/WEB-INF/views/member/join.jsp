@@ -72,12 +72,12 @@ table tr td {text-align: left;}
 					<label for='check_all'>전체동의</label>
 				</li>
 				<li>
-					<input type='checkbox' class='normal' />
+					<input type='checkbox' name='prov_chk' class='normal chk' />
 					<label for='check_1'>개인정보 처리방침 동의</label>
 					<a class='btn-fill-s' href='privacy_usage.me'>약관보기</a>
 				</li>
 				<li>
-					<input type='checkbox' class='normal' />
+					<input type='checkbox' name='prov_chk' class='normal chk' />
 					<label for='check_2'>서비스 이용약관 동의</label>
 					<a class='btn-fill-s' href='join_service.me'>약관보기</a>
 				</li>
@@ -123,7 +123,7 @@ table tr td {text-align: left;}
 		
 		if ( ! item_check( $('[name=pw]')) ) return;
 		if ( ! item_check( $('[name=pw_ck]')) ) return;
-		if ( ! item_check( $('[name=email]')) ) return;				
+		if ( ! item_check( $('[name=email]')) ) return;
 		
 		$('form').submit();
 		

@@ -22,7 +22,7 @@
 </div>
 <div class='my_category' style="margin-left: 100px;">
 	<ul>
-		<li><a href='storage.my?id=${loginInfo.id }'
+		<li><a href='storage.my'
 			class='${my_category eq "storage" ? "active" : "" }'>내 창고</a></li>
 		<li><a href='booking.my'
 			class='${my_category eq "booking" ? "active" : "" }'>예약내역</a></li>

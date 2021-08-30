@@ -11,18 +11,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import manager.ManagerServiceImpl;
 import manager.ProvisionVO;
 import member.MemberPage;
+import reservation.ReserPage;
+import reservation.ReserServiceImpl;
 
 @Controller
 public class CommonController {	
 	
 	@Autowired private ManagerServiceImpl service;
-	@Autowired private MemberPage page;	
+	@Autowired private MemberPage page;
+	@Autowired private ReserServiceImpl r_service;
+	@Autowired private ReserPage r_page;
 	
 	//이용안내 화면 요청
 	@RequestMapping("/guide.gu")
 	public String list(HttpSession session, Model model) {
 		session.setAttribute("category", "gu");
-		return "guide/guide";
+		return "guide/guides";
 	}
 	
 	// 이용약관 삭제 처리
@@ -79,11 +83,26 @@ public class CommonController {
 		return "manager/provision_list";
 	}
 	
-	// 관리자 페이지 화면 요청
-	@RequestMapping("/master.ma")
-	public String manager(HttpSession session) {
-		session.setAttribute("category", "ma");
-		return "manager/master";
+	// 예약 내역 조회
+	@RequestMapping("/booking.ma")
+	public String bookingList(HttpSession session, Model model, 
+			String search, String keyword,
+			@RequestParam(defaultValue = "1") int curPage) {
+		
+		session.setAttribute("ma_category", "ma");
+		
+		// 페이지 처리된 예약 목록 조회
+		r_page.setCurPage(curPage);	// 페이지의 현재 페이지는 curPage
+		
+		
+		// 예약 목록 검색을 위한 처리
+		r_page.setSearch(search);
+		r_page.setKeyword(keyword);
+		
+		// 예약 목록 조회하여 화면에 출력
+		model.addAttribute("page", r_service.mg_reser_list(r_page));
+				
+		return "manager/booking_list";
 	}
 	
 	// 회원 목록 조회
@@ -91,6 +110,8 @@ public class CommonController {
 	public String member_list(HttpSession session, Model model, 
 			String search, String keyword,
 		@RequestParam(defaultValue = "1") int curPage) {
+		
+		session.setAttribute("ma_category", "ma");
 		
 		// 페이지 처리된 글 목록조회
 		page.setCurPage(curPage);	// 페이지의 현재 페이지는 curPage 이며
@@ -104,4 +125,10 @@ public class CommonController {
 		return "manager/member_list";
 	}
 	
+	// 관리자 페이지 화면 요청
+	@RequestMapping("/master.ma")
+	public String manager(HttpSession session) {
+		session.setAttribute("category", "ma");
+		return "manager/master";
+	}
 }

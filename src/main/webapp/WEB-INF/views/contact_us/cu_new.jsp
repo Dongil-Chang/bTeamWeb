@@ -59,7 +59,7 @@ function sendFile(file){
 </head>
 <body>
 	<h3>소소한 문의</h3>
-	<form method="post" action="cu_insert.qa" enctype="multipart/form-data">
+	<form id='cu_new' method="post" action="cu_insert.qa" enctype="multipart/form-data">
 		<table class='w-pct70'>
 			<tr>
 				<th>문의종류</th>
@@ -96,7 +96,7 @@ function sendFile(file){
 		</table>
 	</form>
 	<div class='btnSet'>
-		<a class='btn-fill' onclick= "if ( emptyCheck() ) $('form').submit()">문의하기 등록</a>
+		<a class='btn-fill' onclick= "if ( emptyCheck() ){ alert(123); $('form#cu_new').submit()}">문의하기 등록</a>
 		<a class='btn-empty' onclick='history.go(-1)'>입력취소</a>
 	</div>
 	<div class='btnSet'>

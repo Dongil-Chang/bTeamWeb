@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import manager.FaqVO;
+
+
 @Service
 public class NoticeServiceImpl implements NoticeService {
 	
@@ -55,5 +58,17 @@ public class NoticeServiceImpl implements NoticeService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<NoticeVO> and_notice_list() {
+		return dao.and_notice_list();
+	}
+
+	@Override
+	public List<FaqVO> and_faq_list() {
+		return dao.and_faq_list();
+	}
+
+	
 
 }

@@ -1,9 +1,40 @@
 package reservation;
 
 public class ReserVO {
-	private String  product_id, product_type, booking_member, booking_start, booking_end ,product_using;
+	private String  product_id, product_type, product_code, product_cost,  booking_member, booking_start, booking_end ,product_using, reserved, name;
+	private int no;
 
 	
+	public String getProduct_cost() {
+		return product_cost;
+	}
+
+
+	public void setProduct_cost(String product_cost) {
+		this.product_cost = product_cost;
+	}
+
+
+	public String getProduct_code() {
+		return product_code;
+	}
+
+
+	public String getReserved() {
+		return reserved;
+	}
+
+
+	public void setReserved(String reserved) {
+		this.reserved = reserved;
+	}
+
+
+	public void setProduct_code(String product_code) {
+		this.product_code = product_code;
+	}
+
+
 	public ReserVO() {}
 
 
@@ -25,6 +56,45 @@ public class ReserVO {
 		this.product_type = product_type;
 		this.booking_start = booking_start;
 		this.booking_end = booking_end;
+	}
+
+	public ReserVO(String product_id, String product_type, String product_code, String product_cost,
+			String booking_member, String booking_start, String booking_end) {
+		super();
+		this.product_id = product_id;
+		this.product_type = product_type;
+		this.product_code = product_code;
+		this.product_cost = product_cost;
+		this.booking_member = booking_member;
+		this.booking_start = booking_start;
+		this.booking_end = booking_end;
+	}
+	
+	/*
+	 * public ReserVO(String product_id, String product_type, String booking_start,
+	 * String booking_end) { super(); this.product_id = product_id;
+	 * this.product_type = product_type; this.booking_start = booking_start;
+	 * this.booking_end = booking_end; }
+	 */
+	
+	
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public int getNo() {
+		return no;
+	}
+
+
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 

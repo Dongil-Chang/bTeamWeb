@@ -58,7 +58,7 @@
 				<td>${vo.no }</td>
 				<td>
 					<c:choose>	
-						<c:when test="${vo.product_id eq 'C'}">캐피닛(C)</c:when>
+						<c:when test="${vo.product_id eq 'C'}">캐비닛(C)</c:when>
 						<c:when test="${vo.product_id eq 'B'}">박스(B)</c:when>
 					</c:choose>
 				</td>

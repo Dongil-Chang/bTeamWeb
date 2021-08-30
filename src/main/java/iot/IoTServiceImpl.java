@@ -20,6 +20,11 @@ public class IoTServiceImpl implements IoTService {
 	public IoTVO IoT_list(String id) {
 		return dao.IoT_list(id);
 	}
+
+	@Override
+	public int IoT_insert_Press(HashMap<String, Object> map) {
+		return dao.IoT_insert_TemHum(map);
+	}
 	
 
 	

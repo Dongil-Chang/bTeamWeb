@@ -9,10 +9,20 @@
 				, #{door_values,  jdbcType=VARCHAR}, #{product_code, jdbcType=VARCHAR}, #{b_press, jdbcType=VARCHAR} )
 	</insert>
 
+	<insert id="pressInsert">
+		insert into tbl_iot (id, product_code, press)
+		values ( #{id, jdbcType=VARCHAR}, #{product_code, jdbcType=VARCHAR}, #{b_press, jdbcType=VARCHAR} )
+	</insert>
+
 	<select id="values" resultType="iot.IoTVO">
 		select * from (select * from tbl_iot order by rownum desc) 
 		where rownum = 1
 		and id = #{id}
+		
+<!-- 		select * from (select * from tbl_iot order by rownum desc) -->
+<!-- 		where iot_code = (select max(iot_code) from tbl_iot) -->
+<!-- 		and id = #{id} -->
+		
 		
 <!-- 		SELECT * FROM (SELECT * FROM tbl_iot ORDER BY ROWNUM DESC) i, user_member u -->
 <!-- 		where i.id = u.id -->
