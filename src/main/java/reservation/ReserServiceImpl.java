@@ -32,7 +32,18 @@ public class ReserServiceImpl implements ReserService {
 		return dao.reser_productCode(map);
 	}
 
+	@Override
+	public List<ReserVO> user_reser_list(String id) {
+		return dao.user_reser_list(id);
+	}
+	
+	@Override
+	public boolean user_reser_cancel(HashMap<String, String> map) {
+		return dao.user_reser_cancel(map);
+	}
 
+
+	
 	
 	
 	// 예약 가능 상품 목록 조회(Web)
@@ -53,8 +64,14 @@ public class ReserServiceImpl implements ReserService {
 		return dao.my_reser_list(map);
 	}
 
+	@Override
+	   public boolean reser_using_update(ReserVO vo) {
+	      return dao.reser_using_update(vo);
+	   }
 
-	
-	
+	@Override
+	public boolean reser_reserved_update(ReserVO vo) {
+	      return dao.reser_reserved_update(vo);
+	}
 	
 }

@@ -14,7 +14,7 @@
 				<ul>
 					<li><a href='guide.gu' class="${category eq 'gu' ? 'active' : ''}">이용안내</a></li>
 					
-					<c:if test="${!empty loginInfo }">
+					<c:if test="${!empty loginInfo}">
 						<li><a href='list.rv' class='${category eq "rv" ? "active" : "" }'>예약하기</a></li>
 					</c:if>
 					<c:if test="${empty loginInfo }">

@@ -51,7 +51,6 @@
 		values (member_code_seq.nextval, #{id}, #{name}, #{kakao_login, jdbcType=VARCHAR}, 1, 1)
 	</insert>
 	
-	
 	<select id="provision_select_2" resultType="manager.ProvisionVO">
 		select provision_content from tbl_provision
 		where provision_code = #{use_agreement, jdbcType=VARCHAR}

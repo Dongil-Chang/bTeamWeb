@@ -81,6 +81,63 @@ public class ReservationController {
 	      common_gson(res, list);
 	   }
 	
+	
+	@ResponseBody
+    @RequestMapping("/and_user_reservationList")
+    public void user_reserList(HttpServletResponse res, String id) throws Exception {
+
+       List<ReserVO> list = service.user_reser_list(id);
+       //ReserVO vo = new ReserVO();
+
+       common_gson(res, list);
+       //common_gson(res, vo);
+       // System.out.println("bookingMember : "+id);
+       // System.out.println("dd");
+    }
+	
+	
+	@ResponseBody
+    
+    @RequestMapping("/and_user_reservation_cancel") 
+    public void user_reser_cancel(String id, String product_code, HttpServletResponse res) throws Exception {
+    
+    HashMap<String, String> map = new HashMap<String, String>(); 
+    map.put("id",id); 
+    map.put("product_code", product_code);
+    
+    ReserVO vo = new ReserVO();
+    
+    //vo.getProduct_code();
+    
+    service.user_reser_cancel(map);
+    
+    
+    
+    //System.out.println("dddd");
+    common_gson(res, vo);
+    
+    }
+	
+	// 예약추가(Web)
+	@ResponseBody
+	   @RequestMapping("/reserv_step2.rv")
+	   public String join(ReserVO vo) throws Exception {
+	      
+	      
+	      
+	      service.reser_insert(vo);
+	      service.reser_using_update(vo);
+	      service.reser_reserved_update(vo);
+	      
+	      
+	      System.out.println("dd");
+	      
+	      return "reservation/reservationCheck";
+	   }
+	
+	
+	
+	
 	public void common_gson(HttpServletResponse res, List<ReserVO> vo) throws Exception {
 		Gson gson = new Gson(); 
 		String json = gson.toJson(vo);

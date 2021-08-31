@@ -102,7 +102,12 @@ background: #ededed;
 	text-align : left;
 	font-size: 18px;
 }	
-
+.change_color { 
+	color: #eb4034;
+}
+.return_color { 
+	color: #eb4034;
+}
 .a figure {
 	display : inline;
 }
@@ -128,6 +133,9 @@ summary::-webkit-details-marker {
 
 <form action="reserv_step2.rv" method="post">
 <input type = "hidden" name="booking_member" value="${loginInfo.id }" />
+<input type = "hidden" name="booking_start" value="${vo.booking_start}" />
+<input type = "hidden" name="booking_end" value="${vo.booking_end}" />
+
 <div class='booking'>
 	<div class="bookingHeader">
     	<ul>
@@ -148,16 +156,16 @@ summary::-webkit-details-marker {
 				<c:forEach items="${list }" var="vo">
 					<li>
 <%-- 						<div><a onclick='go_detail(${vo.product_code})'>${vo.product_code }</a></div> --%>
-						<div>${vo.product_code }</div>
+						<h3 class="productCode">${vo.product_code }</h3>
 						
-						
+<%-- 						
 						<c:if test="${vo.product_using eq 'Y'}">
 							<div style="color: red;">사용중</div>
 						</c:if>
-						<c:if test="${vo.product_using != 'Y'}">
+ --%>					<c:if test="${vo.reserved != 'Y'}">
 							<div style="color: green;">사용 가능</div>
 						</c:if>
-						<div>${vo.booking_start }</div>
+						<%-- <div>${vo.booking_start }</div> --%>
 					</li>
 				</c:forEach>
 			</ul>	
@@ -171,6 +179,21 @@ summary::-webkit-details-marker {
 	<a class = 'btn-fill' onclick= "$('form').submit()">다음 단계</a>
 	<a class = 'btn-empty' href=''>취소</a>
 </div>
+<script>
 
+/* $('.productCode').click(function(){
+	$(this).addClass('change_color');
+}); 
+ */
+
+ 
+ $('.productCode').toggle(function() {
+	 
+		$(this).addClass('change_color').css('display', 'block');;
+	}, function() {
+		$(this).addClass('return_color');
+	}); 
+ 
+</script>
 </body>
 </html>

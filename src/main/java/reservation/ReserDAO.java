@@ -47,6 +47,10 @@ public class ReserDAO implements ReserService {
 	// 관리자 예약 내역 조회
 	@Override
 	public ReserPage mg_reser_list(ReserPage page) {
+		sql.update("reser.mapper.using_update", page);
+		sql.update("reser.mapper.reserved_update", page);
+
+		
 		page.setTotalList(sql.selectOne("reser.mapper.r_mg_totalList", page));
 		page.setList(sql.selectList("reser.mapper.r_mg_list", page));
 		return page;
@@ -60,6 +64,26 @@ public class ReserDAO implements ReserService {
 		page.setList( sql.selectList("reser.mapper.r_my_list", map) );
 		return page;
 	}
+
+	@Override
+	public List<ReserVO> user_reser_list(String id) {
+		return sql.selectList("reser.mapper.user_reserlist", id);
+	}
+
+	@Override
+	public boolean user_reser_cancel(HashMap<String, String> map) {
+		return (Integer)sql.delete("reser.mapper.user_reser_cancel",map) == 1 ? true : false;
+	}
+
+	@Override
+	   public boolean reser_using_update(ReserVO vo) {
+	      return sql.update("reser.mapper.reser_using_update", vo) == 1 ? true : false;
+	   }
+
+	   @Override
+	   public boolean reser_reserved_update(ReserVO vo) {
+	      return sql.update("reser.mapper.reser_reserved_update", vo) == 1 ? true : false;
+	   }
 
 	
 

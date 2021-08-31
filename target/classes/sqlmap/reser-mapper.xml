@@ -80,10 +80,19 @@
 	</insert>
 	
 	<!-- 회원용 예약리스트(안드로이드) -->
-	<select id="reserlist" resultType="reservation.ReserVO">
-		select product_id, product_type, booking_start, booking_end
-		from tbl_product
-	</select>
+<!-- 	<select id="reserlist" resultType="reservation.ReserVO"> -->
+<!-- 		select product_id, product_type, booking_start, booking_end -->
+<!-- 		from tbl_product -->
+<!-- 	</select> -->
+	
+	
+	<!-- 사용자용 예약리스트 -->
+   <select id="user_reserlist" resultType="reservation.ReserVO">
+      select r.product_id, r.product_type, r.product_code, t.booking_start, t.booking_end
+      from product_reg r, tbl_product t
+      where r.product_code = t.product_code(+)
+      and booking_member = #{id}
+   </select>
 
 	<!-- 관리자용 예약리스트 (안드로이드) -->
 	<select id="mg_reserlist" resultType="reservation.ReserVO">
@@ -91,6 +100,13 @@
 		from product_reg r, tbl_product t
 		where r.product_code = t.product_code(+)
 	</select>
+
+<!-- 안드로이드 예약 내역 삭제 -->
+	<delete id="user_reser_cancel">
+	   delete from tbl_product
+	   where booking_member = #{id} and product_code = #{product_code} 
+	</delete>
+
 
 	
 	<!-- 관리자용 예약리스트      2021/08/29 주석처리
@@ -181,5 +197,21 @@
 		order by r.product_code 
 
 	</select>
+	
+	<!-- using처리 -->
+   <update id="reser_using_update">
+      update tbl_product 
+      set product_using = 'Y' 
+      <![CDATA[ where to_char(booking_start, 'YYYYMMDD') <= TO_CHAR(SYSDATE, 'YYYYMMDD')]]>
+      and to_char(booking_end, 'YYYYMMDD') >= to_char(sysdate, 'YYYYMMDD') 
+   </update>
+
+   <!-- reserved 처리 -->
+   <update id="reser_reserved_update">
+      update tbl_product set reserved ='Y' 
+      <![CDATA[ where to_char(booking_start, 'YYYYMMDD') <= to_char(booking_end, 'YYYYMMDD') ]]>
+   </update>
+	
+	
 	
 </mapper> 

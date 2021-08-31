@@ -28,13 +28,20 @@ public class IoTController {
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		
-		map.put("id", ((MemberVO) session.getAttribute("loginInfo") ).getId() );
-		map.put("booking_member", ((ReserVO) session.getAttribute("reservInfo") ).getBooking_member() );
+		map.put("id", "hanul");
 		map.put("temp", req.getParameter("temp"));
 		map.put("hum", req.getParameter("hum"));
-		map.put("product_code", ((ReserVO) session.getAttribute("reservInfo") ).getProduct_code() );
+		map.put("product_code", "CG0026");
+		map.put("door_values", "4444");
 		map.put("b_press", req.getParameter("b_press"));
+		
+//		map.put("id", ((MemberVO) session.getAttribute("loginInfo") ).getId() );
+//		map.put("booking_member", ((ReserVO) session.getAttribute("reservInfo") ).getBooking_member() );
+//		map.put("temp", req.getParameter("temp"));
+//		map.put("hum", req.getParameter("hum"));
+//		map.put("product_code", ((ReserVO) session.getAttribute("reservInfo") ).getProduct_code() );
+//		map.put("product_code", "CG0026" );
+//		map.put("b_press", req.getParameter("b_press"));
 		
 //		model.addAttribute("vo", req.getParameter("temp"));
 //		model.addAttribute("vo", req.getParameter("hum"));

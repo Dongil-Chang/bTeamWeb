@@ -39,7 +39,7 @@
 		select * 
 		from (select  rownum no, p.*, (select product_using from tbl_product where product_code = p.product_code) product_using
 			from (select * from product_reg <include refid="where_search" />
-					order by product_code) p					
+					order by product_reg_code) p					
 			order by no desc) p
 		where no between #{beginList} and #{endList}
 <!-- 		select * 
