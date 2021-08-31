@@ -180,7 +180,7 @@ ul {
 list-style:none;  padding:0 
 }
 
-#list-top { padding : 20px 10%; }
+#list-top { padding : 10px 10%; }
 #list-top div { height: 36px; }
 #list-top ul {margin: 0; display: flex;}
 #list-top ul li * {vertical-align: middle;}
@@ -237,7 +237,7 @@ li.list-view, li.grid-view { color:#3367d6; padding: 0 6px; border: 1px solid #c
 .list-view a.off, .grid-view a.off { color:#ccc }
 
 
-.aside { width : 20%; min-height : 400px; float : left; background : #6096ba; padding-top: 60px;}
+.aside { width : 20%; min-height : 600px; float : left; background : #6096ba; padding-top: 60px;}
 .content { width : 80%; min-height : 400px; float : left; padding-top: 60px;}
 
 .w-pct80 { width:80% }

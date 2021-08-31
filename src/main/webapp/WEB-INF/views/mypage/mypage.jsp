@@ -26,8 +26,8 @@
 			class='${my_category eq "storage" ? "active" : "" }'>내 창고</a></li>
 		<li><a href='booking.my'
 			class='${my_category eq "booking" ? "active" : "" }'>예약내역</a></li>
-		<li><a href='cu_list.qa'
-			class="${my_category eq 'cu_list' ? 'active' : ''}">1:1 문의</a></li>
+		<li><a href='cu_new.qa'
+			class="${my_category eq 'cu_new' ? 'active' : ''}">1:1 문의</a></li>
 		<li><a href='myinfo.my'
 			class="${my_category eq 'myinfo' ? 'active' : ''}">정보수정</a></li>
 		<li><a href='leave.my'

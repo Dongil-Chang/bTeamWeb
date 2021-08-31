@@ -16,6 +16,9 @@
 				<textarea class='p_textarea'>${vo.provision_content }</textarea>
 			</div>
 		</div>
+		<div class='btnSet'>
+			<a class='btn-fill' onclick="history.go(-1)">회원가입으로</a> <!-- 이전 화면으로 이동 -->
+		</div>
 	</div>	
 </body>
 </html>

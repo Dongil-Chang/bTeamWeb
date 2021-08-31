@@ -7,6 +7,7 @@
 		insert into tbl_iot (id, temperature, humidity, door_values, product_code, press)
 		values ( #{id, jdbcType=VARCHAR}, #{temp, jdbcType=VARCHAR}, #{hum, jdbcType=VARCHAR}
 				, #{door_values,  jdbcType=VARCHAR}, #{product_code, jdbcType=VARCHAR}, #{b_press, jdbcType=VARCHAR} )
+		
 	</insert>
 
 	<insert id="pressInsert">
@@ -15,10 +16,12 @@
 	</insert>
 
 	<select id="values" resultType="iot.IoTVO">
-		select * from (select * from tbl_iot order by rownum desc) 
+		select * from (select * from tbl_iot order by temhum_date desc) 
 		where rownum = 1
 		and id = #{id}
 		
+<!-- 		select case when temperature is null then 0 else temperature end temperature, case when humidity is null then 0 else humidity end humidity, t.*  -->
+ 		
 <!-- 		select * from (select * from tbl_iot order by rownum desc) -->
 <!-- 		where iot_code = (select max(iot_code) from tbl_iot) -->
 <!-- 		and id = #{id} -->

@@ -20,7 +20,7 @@
 $(document).ready(function() {
 	  $('#summernote').summernote({
  	    	/* placeholder: 'content', */
-	        minHeight: 300,
+	        minHeight: 200,
 	        maxHeight: null,
 	        fontNames : [ '맑은고딕', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', ],
  	    	fontNamesIgnoreCheck : [ '맑은고딕' ],
@@ -96,9 +96,10 @@ function sendFile(file){
 		</table>
 	</form>
 	<div class='btnSet'>
-		<a class='btn-fill' onclick= "if ( emptyCheck() ){ alert(123); $('form#cu_new').submit()}">문의하기 등록</a>
+		<a class='btn-fill' onclick= "if ( emptyCheck() ){  $('form#cu_new').submit()}">문의하기 등록</a>
 		<a class='btn-empty' onclick='history.go(-1)'>입력취소</a>
 	</div>
+	
 	<div class='btnSet'>
 		<jsp:include page="/WEB-INF/views/contact_us/cu_list.jsp" />
 	</div>

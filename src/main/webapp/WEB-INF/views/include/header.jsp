@@ -23,16 +23,16 @@
 					
 					<li><a href='list.no' class="${category eq 'no' ? 'active' : ''}">공지사항</a></li>
 					
-					<c:if test="${!empty loginInfo }">
-						<li><a href='cu_list.qa' class="${category eq 'qa' ? 'active' : ''}">1:1문의</a></li>
+<%-- 					<c:if test="${!empty loginInfo }"> --%>
+<%-- 						<li><a href='cu_list.qa' class="${category eq 'qa' ? 'active' : ''}">1:1문의</a></li> --%>
 <%-- 						<li><a href='cu_new.qa' class="${category eq 'qa' ? 'active' : ''}">1:1문의</a></li> --%>
-					</c:if>
+<%-- 					</c:if> --%>
 					
 					<li><a href='list.QnA' class='${category eq "QnA" ? "active" : "" }'>FAQ</a></li>
 					
-	<%-- 				<c:if test="${loginInfo.subcode eq '1' || loginInfo.subcode eq '3'}">
+					<c:if test="${loginInfo.subcode eq '1' || loginInfo.subcode eq '3'}">
 						<li><a href='mypage.my'class="${category eq 'my' ? 'active' : ''}">마이페이지</a></li>
-					</c:if> --%>
+					</c:if>
 					
 					<c:if test="${loginInfo.subcode eq '3'}">
 						<li style="font-weight: 600;"><a href='list.ma' class="${category eq 'ma' ? 'active' : ''}">관리자</a></li>

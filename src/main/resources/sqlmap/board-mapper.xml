@@ -73,7 +73,7 @@
 			or board_content like '%'||#{page.keyword}||'%'
 			or board_writer in (select id from user_member where name like '%'||#{page.keyword}||'%' ) )
 		</if>
-		<if test="admin eq '1'">
+		<if test="admin == 1">
 <!-- 			<if test="search==null or search==''">where </if> -->
 <!-- 			<if test="search!=null and search!=''">and </if> -->
 			and board_writer = #{userid}
@@ -82,7 +82,7 @@
 	
 <!-- subcode 가 1 이면 where 사용 -->
 	<sql id ='and_id'>
-		<if test="admin eq '1'">
+		<if test="admin ==1">
 			and board_writer = #{userid}
 		</if>
 	</sql>  
@@ -102,6 +102,7 @@
 				order by root, step desc) b
 				order by no desc)
 		where no between #{page.beginList} and #{page.endList}
+		
 	</select>
 
 <!-- 	<select id="cu_list" resultType="contactus.ContactUsVO">

@@ -7,7 +7,6 @@
 </head>
 <h3>${loginInfo.name } 님의 예약 창고</h3>
 <body>
-	
 	<table class='w-pct50'>
 		<tr>
 			<th class='w-px250'>온도</th>
@@ -15,8 +14,8 @@
 			<th>측정시간</th>
 		</tr>
 		<tr>
-			<td>${vo.temperature }</td>
-			<td>${vo.humidity }</td>
+			<td class='w-px120'>${vo.temperature }</td>
+			<td class='w-px120'>${vo.humidity }</td>
 			<td>${vo.temhum_date }</td>
 		</tr>
 	</table>

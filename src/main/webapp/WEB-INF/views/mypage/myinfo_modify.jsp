@@ -5,6 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+table tr td {text-align: left;}
+.addr input(:last-child) {margin-bottom: 5px}
+.ui-datepicker table tr {height : inherit;} /* common.css 에서 적용된 table tr  height 값을 초기화 */
+.valid, .invalid {font-size : 13px; font-weight: bold; font-style: italic;}
+.valid { color: #02c39a; }
+.invalid { color: #e63946; }
+.checkbox_group {width: 40%; margin:0 auto; }
+.checkbox_group ul li {text-align: left; margin-left: 100px; line-height: inherit;}
+.checkbox_group ul li span{text-align: right; color : #ff0000; line-height: inherit;}
+</style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  <!-- DatePicker  css 복사  -->
 </head>
 <body>
   <h3> [${loginInfo.name }] 님의 정보 수정 화면</h3>

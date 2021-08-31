@@ -99,7 +99,7 @@
      <section id="main">
      <div class="animation_canvas">
 		<div class="slider_panel">
-			<img  src="imgs/web_mainimg.png" class="slider_image" title="사람살려" />
+			<img  src="imgs/web_mainimg.png" class="slider_image" title="storage_main" />
 			<img src="imgs/image01.png" class="slider_image" title="storage_img1" /> 
 			<img src="imgs/image02.png" class="slider_image" title="storage_img2" /> 
 			<img src="imgs/image03.png" class="slider_image" title="storage_img3" /> 

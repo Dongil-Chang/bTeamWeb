@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import iot.IoTServiceImpl;
 import member.MemberServiceImpl;
@@ -29,7 +30,6 @@ public class MyPageController {
 	public String IoT_list(Model model, HttpSession session) {
 		// 로그인 회원 id 전달
 		String id = (((MemberVO)session.getAttribute("loginInfo")) .getId());
-		
 		model.addAttribute("vo", iot_service.IoT_list(id));
 		return "mypage/myStorage";
 	}
@@ -109,6 +109,7 @@ public class MyPageController {
 				map.put("pw", vo.getPw());
 				session.setAttribute("loginInfo", service.member_login(map));
 				return "redirect:mypage.my";
+				
 			}
 		
 		//마이페이지 회원탈퇴 페이지 이동
@@ -117,25 +118,27 @@ public class MyPageController {
 			session.setAttribute("my_category", "leave");
 			return "mypage/leave";
 		}
-		
+			
 		// 마이페이지 회원탈퇴 전 비밀번호 확인
-			@RequestMapping("/leave_chk")
-			public String leave_my(String id, String pw) {
+			@ResponseBody @RequestMapping("/leave_chk")
+			public int leave_my(String id, String pw) {
 				HashMap<String, String> map = new HashMap<String, String>();
 				map.put("id", id);
 				map.put("pw", pw);
 				if( service.member_pw_check(map) !=null )
-					return "mypage/leave_bye";
+					return 1;
+//					return "mypage/leave_bye?id=id";
 				else 
-					
-					return "redirect:leave.my";
+					return 0;
+//					return "redirect:leave.my";
 			}
 		
 		// 마이페이지 회원탈퇴
 			@RequestMapping("/leave_bye")
-			public String leave_bye(String id) {
+			public String leave_bye(String id, HttpSession session) {
 				service.member_delete(id);
+				session.removeAttribute("loginInfo");
 				return "redirect:/";
 			}
-	
+				
 }
